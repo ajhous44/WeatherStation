@@ -1,0 +1,51 @@
+import firebase from 'firebase';
+const firebaseConfig = {
+    apiKey: "AIzaSyA7oUSdWemLTQTrI1_vpOknb_kIBTZMkI4",
+    authDomain: "weatherstation-399dc.firebaseapp.com",
+    databaseURL: "https://weatherstation-399dc-default-rtdb.firebaseio.com",
+    projectId: "weatherstation-399dc",
+    storageBucket: "weatherstation-399dc.appspot.com",
+    messagingSenderId: "431023481072",
+    appId: "1:431023481072:web:1f50dd2c9a616ddf2a2235"
+  };
+
+  const app = Firebase.initializeApp(firebaseConfig);
+export const db = app.database();
+
+
+
+
+
+
+
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import LineChart from './LineChart';
+
+
+
+
+function App() {
+  return (
+    <div className="App">
+      <LineChart />
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
