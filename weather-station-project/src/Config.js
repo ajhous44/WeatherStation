@@ -1,8 +1,6 @@
 import firebase from 'firebase';
 
-const DB_CONFIG = {
-   
-  };
+const DB_CONFIG = {};
 
   firebase.initializeApp(DB_CONFIG);
 
