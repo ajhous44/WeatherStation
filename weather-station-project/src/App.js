@@ -30,30 +30,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    /* Using setState (ends up adding lines from the earliest point
-      to every new point, but useful for added functionality if needed)
-      
-      firebase.database().ref("data").on("value", snapshot => {
-      snapshot.forEach(snap => {
-        var d = new Date(0);
-        var epoch = snap.child('time').val();
-        d.setUTCSeconds(epoch);
-        this.setState({
-          datesWithReadings: [],
-          tempArray: [snap.child('tem').val(), ...this.state.tempArray],
-          HumidityArray: [snap.child('hum').val(), ...this.state.HumidityArray, ],
-          TimeArray: [d, ...this.state.TimeArray],
-          lastReadTemp: snap.child('tem').val(),
-          lastReadHum: snap.child('hum').val(),
-          lastReadTime: d.toDateString() + "@" + d.toTimeString()
-         });
-        console.log("temp - " + snap.child('tem').val());
-        console.log("temp - " + snap.child('hum').val());
-        console.log("arr = = = " + this.state.TimeArray.toString());
-      }); 
-  });  */
- 
+  componentDidMount() { 
     firebase.database().ref("data").on("value", snapshot => {
       let newReadingState = [];
       snapshot.forEach(snap => {
@@ -62,6 +39,12 @@ class App extends Component {
 
      this.setState({
        datesWithReadings: newReadingState,
+       tempArray: [],
+       HumidityArray: [],
+       TimeArray: [],
+       lastReadTemp: -1,
+       lastReadHum: -1,
+       lastReadTime: -5
       });
   });
 }
@@ -71,16 +54,17 @@ class App extends Component {
     return (
     <div className="App">     
       {this.state.datesWithReadings.map(data => {
-                this.state.tempArray.push(data.tem)
-                this.state.HumidityArray.push(data.hum)
-                var d = new Date(0);
-                var epoch = data.time;
-                d.setUTCSeconds(epoch);
-                this.state.TimeArray.push(d);
-                
-                this.state.lastReadTemp = data.tem;
-                this.state.lastReadHum = data.hum;
-                this.state.lastReadTime = d.toDateString() + "@" + d.toTimeString();
+              this.state.tempArray.push(data.tem)
+              this.state.HumidityArray.push(data.hum)
+              var d = new Date(0);
+              var epoch = data.time;
+              d.setUTCSeconds(epoch);
+              this.state.TimeArray.push(d);
+              
+              this.state.lastReadTemp = data.tem;
+              this.state.lastReadHum = data.hum;
+              this.state.lastReadTime = d.toDateString() + "@" + d.toTimeString();
+
           })}
       <div className="grid-container">
         <span>   
@@ -92,10 +76,10 @@ class App extends Component {
         <span>
           <h1>Current Humidity: {this.state.lastReadHum}</h1>
         </span>
-        <span>Last Updated: {this.state.lastReadTime}</span>
+        <span><span>Last Updated: {this.state.lastReadTime}</span></span>
         </div>
       <div className="readingCharts">
-        <LineChart xAxis = {this.state.TimeArray} yAxisTemps = {this.state.tempArray} yAxisHum = {this.state.HumidityArray} gName = "Humidity" />
+        <LineChart xAxis = {this.state.TimeArray} yAxisTemps = {this.state.tempArray} yAxisHum = {this.state.HumidityArray} />
       </div>      
     </div>
   );

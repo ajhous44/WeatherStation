@@ -7,8 +7,6 @@ import firebase from 'firebase';
 class LineChart extends React.Component {
 
     render() {
-
-        console.log(this.props.xAxis); 
         
         return (
             <div>
@@ -32,33 +30,23 @@ class LineChart extends React.Component {
              ]}
 
              layout={ 
-                 {
-                     /* dragmode: false,
-                     scrollZoom: false,
-                     displayModeBar: false, */ 
+                 { 
                      width: 1000, 
                      height: 500, 
-                     title: 'Weather Station Data Visualization', 
-                     xaxis: {                  // all "layout.xaxis" attributes: #layout-xaxis
-                        title: 'time',
-                        tickformat: '%a %b %e %Y \n %I:%M %p',
+                     title: 'Weather Station Data Visualization',
+                     xaxis: {                  
+                        title: 'Time',
+                        tickformat: '%a %b %e %Y \n %I:%M:%S %p',
                         tickmode: 'array',
-                        tickangle: '20',
-
-                        
+                        tickangle: '20',    
                     },
-                    yaxis: {                  // all "layout.xaxis" attributes: #layout-xaxis
-                        title: 'Temperature (°F)'
+                    yaxis: {                 
+                       title: 'Data From Reading' 
                     }
-                    
                         } 
                     }
-
              />
-             
-            
             </div>    
-           
         )
     }
 }
