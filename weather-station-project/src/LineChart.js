@@ -38,12 +38,12 @@ class LineChart extends React.Component {
                      displayModeBar: false, */ 
                      width: 1000, 
                      height: 500, 
-                     title: (this.props.gName), 
+                     title: 'Weather Station Data Visualization', 
                      xaxis: {                  // all "layout.xaxis" attributes: #layout-xaxis
                         title: 'time',
-                        tickformat: '%I %M %S\n %Y',
+                        tickformat: '%a %b %e %Y \n %I:%M %p',
                         tickmode: 'array',
-                        tickangle: '45',
+                        tickangle: '20',
 
                         
                     },

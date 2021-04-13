@@ -4,15 +4,18 @@ import './App.css';
 import LineChart from './LineChart';
 import firebase from 'firebase';
 import {DB_CONFIG} from './Config';
-
+/* 
+Help:
+Converting to date object: https://stackoverflow.com/questions/4631928/convert-utc-epoch-to-local-date
+Plotly date formatting : https://github.com/d3/d3-time-format/blob/master/README.md
+NTP Time Client: https://github.com/arduino-libraries/NTPClient/blob/master/keywords.txt
+*/
 
 
 class App extends Component {
 
   constructor() {
     super();
-
-    
 
     this.state = {
       tempArray: [],
@@ -21,21 +24,19 @@ class App extends Component {
       datesWithReadings: [],
       lastReadTemp: -1,
       lastReadHum: -1,
-      lastReadTime: -1,
-      speed: 10,
+      lastReadTime: -1
     };
   }
 
   componentDidMount() {
-
     firebase.database().ref("data").on("value", snapshot => {
-      let datesWithReading = [];
+      let newReadingState = [];
       snapshot.forEach(snap => {
-        datesWithReading.push(snap.val());
+        newReadingState.push(snap.val());
       });
+
      this.setState({
-       datesWithReadings: datesWithReading,
-       speed: 12,
+       datesWithReadings: newReadingState,
        tempArray: [],
        HumidityArray: [],
        TimeArray: [],
@@ -43,66 +44,42 @@ class App extends Component {
        lastReadHum: -1,
        lastReadTime: -5
       });
-
-    
   });
 }
 
 
   render(){
     return (
-    <div className="App">
-      {/* <h1>Cur Temp = {this.state.speed}</h1> */}
-     
+    <div className="App">     
       {this.state.datesWithReadings.map(data => {
-            
-          
-               /*  <td><h1>Currently: Humidity = {data.hum} and</h1></td>
-                <td></td>
-                <td><h1>Time = {data.time}</h1></td> */
                 this.state.tempArray.push(data.tem)
                 this.state.HumidityArray.push(data.hum)
                 var d = new Date(0);
                 var epoch = data.time;
-                d.setUTCSeconds(data.time);
-                this.state.TimeArray.push(d)
-                /* this.state.TimeArray.sort(); */
-              
+                d.setUTCSeconds(epoch);
+                this.state.TimeArray.push(d);
+                
                 this.state.lastReadTemp = data.tem;
                 this.state.lastReadHum = data.hum;
-                this.state.lastReadTime = data.time;
-                
-                /* return(
-                  <h1>Time = {data.time} Humidity = {data.hum}</h1>
-                ); */
+                this.state.lastReadTime = d.toDateString() + "@" + d.toTimeString();
           })}
-
       <div className="grid-container">
-          <span>   <p><b>Last Updated:</b> {this.state.lastReadTime}</p>
-        <h6>Year-Month-Date-Hour-Second-Time</h6></span>
+        <span>   
+          <b>Last Updated:</b> {this.state.lastReadTime}
+        </span>
         <span>
-        <h1>Current Temp: {this.state.lastReadTemp}</h1>
-         </span>
-         <span>
-        <h1>Current Humidity: {this.state.lastReadHum}</h1>
-         </span>
-      <span></span>
-      </div>
-
-     {/*  <div className="readingCharts">
-      <LineChart xAxis = {this.state.TimeArray} yAxis = {this.state.tempArray} gName = "Tempeature"/>
-      </div>
+          <h1>Current Temp: {this.state.lastReadTemp}</h1>
+        </span>
+        <span>
+          <h1>Current Humidity: {this.state.lastReadHum}</h1>
+        </span>
+        <span></span>
+        </div>
       <div className="readingCharts">
-      <LineChart xAxis = {this.state.TimeArray} yAxis = {this.state.HumidityArray} gName = "Humidity" />
-      </div> */}
-
-      <div className="readingCharts">
-      <LineChart xAxis = {this.state.TimeArray} yAxisTemps = {this.state.tempArray} yAxisHum = {this.state.HumidityArray} gName = "Humidity" />
-      </div>
-      
+        <LineChart xAxis = {this.state.TimeArray} yAxisTemps = {this.state.tempArray} yAxisHum = {this.state.HumidityArray} gName = "Humidity" />
+      </div>      
     </div>
   );
 }
 }
-
 export default App;
