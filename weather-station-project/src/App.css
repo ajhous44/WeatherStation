@@ -5,8 +5,8 @@
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 1fr;
-  box-shadow: #01720a 0px 5px 10px;
-  gap: 0px 0px;
+  box-shadow: #003605 0px 5px 10px;
+
   grid-template-areas:
     ". . . .";
     margin-left: 100px;
@@ -16,14 +16,27 @@
     z-index:1 ;
 }
 
-.grid-container * {
+.grid-container-inner {
+  align-content: center;
   background-color: #01720a50;
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   position:relative;
   padding: 5px;
   margin: 10px;
+  transition: all .2s ease-in-out;
 }
+
+.grid-container-inner:hover {
+  background-color: #01720a50;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  position:relative;
+  padding: 5px;
+  margin: 10px;
+  transform: scale(1.05);
+}
+
 
 
 

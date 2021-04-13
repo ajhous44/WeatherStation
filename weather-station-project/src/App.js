@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import LineChart from './LineChart';
 import firebase from 'firebase';
 import {DB_CONFIG} from './Config';
 /* 
 
-Help:
+Outside Help:
 Converting to date object: https://stackoverflow.com/questions/4631928/convert-utc-epoch-to-local-date
 Plotly date formatting : https://github.com/d3/d3-time-format/blob/master/README.md
 NTP Time Client: https://github.com/arduino-libraries/NTPClient/blob/master/keywords.txt
+Firebase: https://firebase.google.com/docs
+React: https://www.youtube.com/watch?v=hQAHSlTtcmY&ab_channel=WebDevSimplified,
+       https://reactjs.org/docs/getting-started.html
 
 */
 
@@ -67,19 +69,16 @@ class App extends Component {
 
           })}
       <div className="grid-container">
-        <span>   
-          <h3>Weather Station by: AJ Housholder</h3>
-        </span>
-        <span>
-          <h1>Current Temp: {this.state.lastReadTemp}</h1>
-        </span>
-        <span>
-          <h1>Current Humidity: {this.state.lastReadHum}</h1>
-        </span>
-        <span><span>Last Updated: {this.state.lastReadTime}</span></span>
-        </div>
+        <div className="grid-container-inner"><h3>Weather Station by: AJ Housholder</h3></div>
+        <div className="grid-container-inner"><h1>Current Temp: <br></br>{this.state.lastReadTemp}</h1></div>
+        <div className="grid-container-inner"><h1>Current Humidity: <br></br>{this.state.lastReadHum}</h1></div>
+        <div className="grid-container-inner"><h4>Last Updated: {this.state.lastReadTime}</h4></div>
+      </div>
       <div className="readingCharts">
-        <LineChart xAxis = {this.state.TimeArray} yAxisTemps = {this.state.tempArray} yAxisHum = {this.state.HumidityArray} />
+        <LineChart 
+         xAxis = {this.state.TimeArray}
+         yAxisTemps = {this.state.tempArray}
+         yAxisHum = {this.state.HumidityArray} />
       </div>      
     </div>
   );
