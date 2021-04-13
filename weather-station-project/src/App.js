@@ -41,7 +41,7 @@ class App extends Component {
        TimeArray: [],
        lastReadTemp: -1,
        lastReadHum: -1,
-       lastReadTime: -1
+       lastReadTime: -5
       });
 
     
@@ -62,9 +62,12 @@ class App extends Component {
                 <td><h1>Time = {data.time}</h1></td> */
                 this.state.tempArray.push(data.tem)
                 this.state.HumidityArray.push(data.hum)
-                this.state.TimeArray.push(data.time)
+                var d = new Date(0);
+                var epoch = data.time;
+                d.setUTCSeconds(data.time);
+                this.state.TimeArray.push(d)
                 /* this.state.TimeArray.sort(); */
-          
+              
                 this.state.lastReadTemp = data.tem;
                 this.state.lastReadHum = data.hum;
                 this.state.lastReadTime = data.time;

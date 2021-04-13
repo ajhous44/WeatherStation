@@ -8,7 +8,7 @@ class LineChart extends React.Component {
 
     render() {
 
-       /*  console.log(this.props.tempArr); */
+        console.log(this.props.xAxis); 
         
         return (
             <div>
@@ -17,7 +17,7 @@ class LineChart extends React.Component {
                  {
                  x: (this.props.xAxis),
                  y: (this.props.yAxisTemps),
-                 name: 'Temp (°F)',
+                 name: 'Temperature (°F)',
                  type: 'line',
                  mode: 'lines+markers',
                  },
@@ -33,15 +33,15 @@ class LineChart extends React.Component {
 
              layout={ 
                  {
-                     dragmode: false,
+                     /* dragmode: false,
                      scrollZoom: false,
-                     displayModeBar: false,
+                     displayModeBar: false, */ 
                      width: 1000, 
                      height: 500, 
                      title: (this.props.gName), 
                      xaxis: {                  // all "layout.xaxis" attributes: #layout-xaxis
                         title: 'time',
-                        tickformat: 'auto',
+                        tickformat: '%I %M %S\n %Y',
                         tickmode: 'array',
                         tickangle: '45',
 
