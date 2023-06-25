@@ -1,44 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
 .grid-container {
-  background-color:#e0ffc3;
+  background-color:#212121;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: auto auto auto auto;
   grid-template-rows: 1fr;
-  box-shadow: #003605 0px 5px 10px;
-
-  grid-template-areas:
-    ". . . .";
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 50px;
-    position: sticky; top: 0px;
-    z-index:1 ;
+  box-shadow: #000 0px 5px 10px;
+  grid-template-areas: ". . . .";
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 50px;
+  position: sticky; 
+  top: 0px;
+  z-index:1 ;
+  gap: 20px;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .grid-container-inner {
-  align-content: center;
-  background-color: #01720a50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #282828;
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  position:relative;
   padding: 5px;
-  margin: 10px;
   transition: all .2s ease-in-out;
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #5b247a, #1bcedf) 1;
+  color: #fff;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
+
 }
+
 
 .grid-container-inner:hover {
-  background-color: #01720a50;
-  border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  position:relative;
-  padding: 5px;
-  margin: 10px;
   transform: scale(1.05);
 }
-
-
-
 
 .readingCharts {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -50,8 +57,25 @@
 .App {
   height: 100vh;
   text-align: center;
-  background-color: #01720a;
+  background-color: #282828;
 }
 
+.readingCharts {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  display:inline-block;
+  z-index: 2;
+  margin:10px;
+  position: relative;
+  padding: 1px;
+}
 
-
+.readingCharts::before {
+  content: "";
+  position: absolute;
+  top: -10px; 
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  background: linear-gradient(135deg, #5b247a, #1bcedf);
+  z-index: -1;
+}

@@ -17,15 +17,14 @@ class LineChart extends React.Component {
                  y: (this.props.yAxisTemps),
                  name: 'Temperature (°F)',
                  type: 'line',
-                 mode: 'lines+markers',
+                 mode: 'markers',
                  },
                  {
                     x: (this.props.xAxis),
                     y: (this.props.yAxisHum),
                     name: 'Humidity (%)',
                     type: 'line',
-                    mode: 'lines+markers'
-   
+                    mode: 'markers'  
                     }
              ]}
 
