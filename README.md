@@ -34,22 +34,17 @@ To run the Weather Station App locally on your machine, follow the instructions 
    git clone https://github.com/username/weather-station-app.git
    ```
 
-2. Navigate to the project directory:
-   ```
-   cd weather-station-app
-   ```
-
-3. Install the necessary dependencies:
+2. Install the necessary dependencies:
    ```
    npm install
    ```
 
-4. Start the development server:
+3. Start the development server:
    ```
    npm start
    ```
 
-5. Open your web browser and visit `http://localhost:3000` to access the app.
+4. Open your web browser and visit `http://localhost:3000` to access the app.
 
 ## Configuration
 
