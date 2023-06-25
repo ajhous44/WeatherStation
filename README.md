@@ -31,7 +31,7 @@ To run the Weather Station App locally on your machine, follow the instructions 
 
 1. Clone the repository:
    ```
-   git clone https://github.com/username/weather-station-app.git
+   git clone https://github.com/ajhous44/WeatherStation.git
    ```
 
 2. Install the necessary dependencies:
