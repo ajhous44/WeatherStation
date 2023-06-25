@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Weather Station App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Weather Station App is a web application developed by AJ Housholder as a senior project. It provides temperature and humidity readings from a weather station, offering real-time data visualization and a user-friendly interface.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+The Weather Station App is designed to display accurate and up-to-date weather information. Leveraging React.js for the front-end development, the app retrieves data from a weather station and visualizes it through line charts using the react-plotly.js library. It offers features such as real-time data updates, historical data visualization, and an intuitive user interface.
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Real-time Data:** The app provides real-time temperature and humidity readings from the weather station.
+- **Current Readings:** It displays the current temperature and humidity values in a user-friendly format.
+- **Last Update Time:** The app presents the timestamp of the last data update, allowing users to track the recency of the readings.
+- **Historical Data Visualization:** Interactive line charts, implemented using the react-plotly.js library, provide a visual representation of temperature and humidity trends over time.
+- **Intuitive Interface:** The user interface is designed to be intuitive and easy to navigate, ensuring a seamless user experience.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+The Weather Station App incorporates the following technologies and libraries:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React.js:** A JavaScript library for building user interfaces efficiently. It enables component-based development and state management.
+  - **Lifecycle Methods:** React's lifecycle methods, such as `componentDidMount`, are used to manage component initialization and data fetching.
+  - **State Management:** React's state management is utilized to store and update temperature, humidity, and time data within the app.
+- **Firebase:** A cloud-based platform used for real-time data storage and retrieval (optional, customizable).
+- **CSS:** Cascading Style Sheets for styling and layout of the app's user interface.
+- **react-plotly.js:** A sublibrary for React.js used to create interactive line charts for data visualization.
 
-### `npm run build`
+## Installation and Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the Weather Station App locally on your machine, follow the instructions below:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   ```
+   git clone https://github.com/username/weather-station-app.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Navigate to the project directory:
+   ```
+   cd weather-station-app
+   ```
 
-### `npm run eject`
+3. Install the necessary dependencies:
+   ```
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Start the development server:
+   ```
+   npm start
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Open your web browser and visit `http://localhost:3000` to access the app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Configuration
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To integrate the app with actual data from a Firebase database, follow these steps:
 
-## Learn More
+1. Create a Firebase project and obtain the corresponding configuration details.
+2. Open the `Config.js` file located within the project.
+3. Replace `/*INSERT FIREBASE CONFIG HERE*/` with your Firebase configuration.
+4. Save the file.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Please note that the app comes preconfigured with dummy data for demonstration purposes. Uncomment the relevant code in the `App.js` file to connect to your Firebase database and retrieve real-time data.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Additional Information
 
-### Code Splitting
+The Weather Station App supports flexible deployment options. The underlying Arduino weather station used for data collection can be powered by a solar battery, providing sustainability and independence from traditional power sources. This allows for easy installation in various locations without the need for a constant power supply.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Moreover, the app can utilize a SIM card to connect to the internet. By leveraging a SIM card, the device can transmit data and access online services, enabling placement in remote or challenging environments where Wi-Fi connectivity may be limited.
 
-### Analyzing the Bundle Size
+This project received assistance and outside help from the following resources:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Con
 
-### Making a Progressive Web App
+verting to date object: [Stack Overflow](https://stackoverflow.com/questions/4631928/convert-utc-epoch-to-local-date)
+- Plotly date formatting: [D3.js Time Format Documentation](https://github.com/d3/d3-time-format/blob/master/README.md)
+- NTP Time Client: [Arduino NTPClient Library](https://github.com/arduino-libraries/NTPClient/blob/master/keywords.txt)
+- Firebase: [Firebase Documentation](https://firebase.google.com/docs)
+- React: [WebDevSimplified YouTube Channel](https://www.youtube.com/watch?v=hQAHSlTtcmY&ab_channel=WebDevSimplified), [React.js Documentation](https://reactjs.org/docs/getting-started.html)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
